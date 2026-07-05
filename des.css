@@ -1,90 +1,56 @@
-/* Core Reset and Dark Theme Variables */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background-color: #0a0a0a; /* Deep cinematic black */
-    color: #f4f4f4;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    line-height: 1.6;
-}
-
-.site-header {
-    text-align: center;
-    padding: 4rem 1rem 2rem;
-    letter-spacing: 2px;
-}
-
-.site-header h1 {
-    font-size: 2rem;
-    font-weight: 300;
-    margin-bottom: 0.5rem;
-}
-
-.site-header p {
-    color: #888;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-}
-
-/* The CSS Grid Gallery */
-.gallery-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 2rem;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-/* Enforcing the strict 2:3 Aspect Ratio */
-.gallery-item {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 2 / 3;
-    overflow: hidden;
-    background-color: #1a1a1a; /* Placeholder color before image loads */
-    border-radius: 4px;
-}
-
-.gallery-item img,
-.gallery-item video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures the image fills the 2:3 box without stretching */
-    transition: transform 0.5s ease;
-}
-
-/* Cinematic Hover Effect */
-.overlay {
-    position: absolute;
+/* --- Navigation Bar Styling --- */
+.top-nav {
+    position: sticky; /* Keeps the menu at the top when scrolling */
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background-color: rgba(10, 10, 10, 0.85); /* Slightly transparent black */
+    backdrop-filter: blur(8px); /* Frosted glass effect */
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.4s ease;
+    padding: 1.2rem 2rem;
+    z-index: 100; /* Ensures the menu stays above your images/videos */
+    border-bottom: 1px solid #222;
 }
 
-.gallery-item:hover img {
-    transform: scale(1.05); /* Slight zoom on hover */
+.nav-brand {
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: #ffffff;
+    font-size: 1.1rem;
 }
 
-.gallery-item:hover .overlay {
-    opacity: 1;
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
 }
 
-.overlay h3 {
-    font-size: 1.2rem;
-    font-weight: 400;
+.nav-links a {
+    color: #888888;
+    text-decoration: none;
+    font-size: 0.85rem;
+    text-transform: uppercase;
     letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ffffff; /* Text turns stark white when tapped/hovered */
+}
+
+/* Mobile Responsive Rule */
+@media (max-width: 600px) {
+    .top-nav {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+}
     transform: translateY(20px);
     transition: transform 0.4s ease;
 }

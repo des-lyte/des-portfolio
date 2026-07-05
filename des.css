@@ -1,0 +1,94 @@
+/* Core Reset and Dark Theme Variables */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0a0a0a; /* Deep cinematic black */
+    color: #f4f4f4;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.site-header {
+    text-align: center;
+    padding: 4rem 1rem 2rem;
+    letter-spacing: 2px;
+}
+
+.site-header h1 {
+    font-size: 2rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+}
+
+.site-header p {
+    color: #888;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+/* The CSS Grid Gallery */
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Enforcing the strict 2:3 Aspect Ratio */
+.gallery-item {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
+    background-color: #1a1a1a; /* Placeholder color before image loads */
+    border-radius: 4px;
+}
+
+.gallery-item img,
+.gallery-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image fills the 2:3 box without stretching */
+    transition: transform 0.5s ease;
+}
+
+/* Cinematic Hover Effect */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.gallery-item:hover .overlay {
+    opacity: 1;
+}
+
+.overlay h3 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    transform: translateY(20px);
+    transition: transform 0.4s ease;
+}
+
+.gallery-item:hover .overlay h3 {
+    transform: translateY(0);
+}
